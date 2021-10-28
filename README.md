@@ -9,12 +9,14 @@ Repositório para estudos de TDD
 ![testing_library_32](https://user-images.githubusercontent.com/4163340/139123134-e6a4c480-87a6-4a46-83eb-e74b02dd98cc.png)
 </div>
 
-### Criando seu App React
+### 1) Criando seu App React
 Instale sua aplicação com Create React App `yarn create react-app my-app --template typescript`
 
 Utilizando o CRA para criar seu app React o Jest já é instalado e configurado automaticamente.
 
-### Instalação do Testing Library
+-----
+
+### 2) Instalação do Testing Library
 
 I) Instale a lib para testar o React DOM `yarn add @testing-library/react`
 
@@ -28,8 +30,9 @@ II) Instale a lib para testar o React Hooks `yarn add react-hooks-testing-librar
 **Documentação:**
   - https://react-hooks-testing-library.com/
 
+-----
 
-### Arquivo `jest.config.js`
+### 3) Arquivo `jest.config.js`
 Crie o arquivo no diretório principal da sua aplicação
 ```js
 module.exports = {
@@ -39,3 +42,18 @@ module.exports = {
   },
 }
 ```
+-----
+
+### 4) Alteração no `package.json` (So se você quiser)
+Altere a opção `scripts` -> `test` para:
+```js
+"test": "react-scripts test --onlyChanged --color --verbose",
+```
+
+| Comando | Função |
+| ------- | ------ |
+| `onlyChanged` | Tenta identificar quais testes devem ser executados baseado nos arquivos modificados no repositório atual. Só funciona se você estiver rodando testes em um repositório git/hg no momento e requer um gráfico de dependências estático (ou seja, sem "requires" dinâmicos). |
+| `color` | Força os resultados dos testes a serem destacados mesmo se o stdout não for "TTY". |
+| `verbose` | Exibe resultados de testes individuais com a hierarquia da suite de testes. |
+
+*Para mais opções [acesse a página de "Opções CLI do Jest"](https://jestjs.io/pt-BR/docs/cli)*
