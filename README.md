@@ -33,7 +33,7 @@ II) Instale a lib para testar o React Hooks `yarn add react-hooks-testing-librar
 -----
 
 ### 3) Arquivo `jest.config.js`
-Crie o arquivo no diretório principal da sua aplicação
+Crie o arquivo no diretório principal da sua aplicação para que o jeste reconheça todos os arquivos de teste.
 ```js
 module.exports = {
   modulePathIgnorePatterns: ['<rootDir>/dist/'],
@@ -42,6 +42,8 @@ module.exports = {
   },
 }
 ```
+
+ Coloque os arquivos de testes ao lado do arquivo que será testado
 -----
 
 ### 4) Alteração no `package.json` (So se você quiser)
