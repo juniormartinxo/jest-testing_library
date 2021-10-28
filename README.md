@@ -11,6 +11,7 @@ Repositório para estudos de TDD
 
 ### Primeiros passos
 Instale sua aplicação com Create React App `yarn create react-app my-app --template typescript`
+
 Utilizando o CRA para criar seu app React o Jest já é instalado e configurado automaticamente.
 
 ### Segundo passo
