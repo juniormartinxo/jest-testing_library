@@ -9,24 +9,33 @@ Repositório para estudos de TDD
 ![testing_library_32](https://user-images.githubusercontent.com/4163340/139123134-e6a4c480-87a6-4a46-83eb-e74b02dd98cc.png)
 </div>
 
-### Primeiros passos
+### Criando seu App React
 Instale sua aplicação com Create React App `yarn create react-app my-app --template typescript`
 
 Utilizando o CRA para criar seu app React o Jest já é instalado e configurado automaticamente.
 
-### Segundo passo
-Instale o Testing Library
+### Instalação do Testing Library
 
-
-I) React DOM `yarn add @testing-library/react`
+I) Instale a lib para testar o React DOM `yarn add @testing-library/react`
 
 **Documentação:**
   - [DOM Testing Library](https://testing-library.com/docs/dom-testing-library/intro)
   - [Reacting Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
 
 
-II) React Hooks `yarn add react-hooks-testing-library`
+II) Instale a lib para testar o React Hooks `yarn add react-hooks-testing-library`
 
 **Documentação:**
   - https://react-hooks-testing-library.com/
 
+
+### Arquivo `jest.config.js`
+Crie o arquivo no diretório principal da sua aplicação
+```js
+module.exports = {
+  modulePathIgnorePatterns: ['<rootDir>/dist/'],
+  moduleNameMapper: {
+    '@/(.*)': '<rootDir>/src/$1',
+  },
+}
+```
