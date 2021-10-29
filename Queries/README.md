@@ -139,7 +139,7 @@ screen.debug(screen.getByText('test'))
 screen.debug(screen.getAllByText('multi-test'))
 ```
 
-4.a) Testingo Playground
+4.a) Testing Playground
 Para debugar utilizando o [testing-playground](https://testing-playground.com/) utilize o método `logTestingPlaygroundURL()`
 
 ```js
