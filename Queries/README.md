@@ -79,3 +79,16 @@ screen.getByText(/^hello world$/i) // full string match, ignore case
 screen.getByText(/Hello W?oRlD/i) // substring match, ignore case, searches for "hello world" or "hello orld"
 ```
 
+**Não é possível localizar**
+```js
+// full string does not match
+screen.getByText('Goodbye World')
+
+// case-sensitive regex with different case
+screen.getByText(/hello world/)
+
+// function looking for a span when it's actually a div:
+screen.getByText((content, element) => {
+  return element.tagName.toLowerCase() === 'span' && content.startsWith('Hello')
+})
+```
