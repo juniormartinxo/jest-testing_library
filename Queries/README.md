@@ -7,23 +7,23 @@ O princípio básico para se criar testes de componentes é entender que deve-se
 Quanto mais seus testes se assemelham à forma como o software é usado, mais confiança eles podem lhe dar.
 
 ----------
-### Tipos de consultas [🔗](https://testing-library.com/docs/queries/about#types-of-queries)
+### 1) Tipos de consultas [🔗](https://testing-library.com/docs/queries/about#types-of-queries)
 
 As consultas podem se dividir em dois tipos, sendo:
 
-#### Busca de elementos únicos
+#### 1.a) Busca de elementos únicos
 - `getBy...`
 - `queryBy...`
 - `findBy...`
 
-#### Busca de múltiplos elementos
+#### 1.b) Busca de múltiplos elementos
 - `getAllBy...`
 - `queryAllBy...`
 - `findAllBy...`
   -  Por se tratar de uma promessa, aceita `waitFor` como parâmetro.
 
 -----
-### Usando consultas
+### 2) Usando consultas
 As consultas realizadas pela *DOM Testing Library* necessitam que seja passado um `container` no primeiro argumento e se você estiver tentando referenciar algo que esteja dentro do `documento.body`é aconselhável que se utilize o `render` e o `screen` da própria biblioteca, veja o exemplo:
 
 ```js
@@ -54,7 +54,7 @@ const inputNode2 = getByLabelText(container, 'Username')
 
 -----
 
-### TextMatch
+### 3) TextMatch
 Alguma consultas aceitam `TextMatch` como argumento, portanto aceitam *string*, *regex* ou uma função que retorna `true` quando uma correpondência é encontrada ou `false` no caso de uma imcompatibilidade.
 
 #### Utilizando o TextMatch
@@ -90,5 +90,29 @@ screen.getByText(/hello world/)
 // function looking for a span when it's actually a div:
 screen.getByText((content, element) => {
   return element.tagName.toLowerCase() === 'span' && content.startsWith('Hello')
+})
+```
+#### 3.a) Precisão
+Nas consultas onde é utilizado `TextMatch` é possível passar um objeto como argumento que pode conter opções que afetam a precisão da correspondência de string:
+
+##### 3.a.1) Exact
+- Para o argumento do `exact`o padrão é `true` corresponde a strings completas, com distinção entre maiúsculas e minúsculas. Quando `false`, corresponde a substrings e não diferencia maiúsculas de minúsculas;
+- Não funciona com `regex`ou `function`;
+
+#### 3.a.2) Nomalizer
+- Por padrão, o `normalizer` retira os espaços em branco do início e no final do texto além de alterar espaços em branco adjacentes em um único espaço.
+- Você pode fornecer a função `getDefaultNormalizer` para obter um normalizador embutido, seja para ajustar essa normalização ou para chamá-lo de seu próprio normalizador.
+- **Exemplo**
+  - correspondência com o texto sem cortar:
+```js
+screen.getByText('text', {
+  normalizer: getDefaultNormalizer({trim: false}),
+})
+```
+  - remover alguns caracteres Unicode, mantendo alguns (mas não todos) do comportamento de normalização integrado:
+```js
+screen.getByText('text', {
+  normalizer: str =>
+    getDefaultNormalizer({trim: false})(str).replace(/[\u200E-\u200F]*/g, ''),
 })
 ```
