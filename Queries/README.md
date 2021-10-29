@@ -117,8 +117,9 @@ screen.getByText('text', {
     getDefaultNormalizer({trim: false})(str).replace(/[\u200E-\u200F]*/g, ''),
 })
 ```
+-----
 
-### 4) Depuração
+### 4) Debugging
 Por conveniência, o `screen` possui um método para debug, que na verdade um atalho para `console.log(prettyDOM())`. Ele oferece suporte à depuração do documento, de um único elemento ou de uma matriz de elementos.
 
 ```js
@@ -136,4 +137,22 @@ screen.debug()
 screen.debug(screen.getByText('test'))
 // debug multiple elements
 screen.debug(screen.getAllByText('multi-test'))
+```
+
+4.a) Testingo Playground
+Para debugar utilizando o [testing-playground](https://testing-playground.com/) utilize o método `logTestingPlaygroundURL()`
+
+```js
+import {screen} from '@testing-library/dom'
+
+document.body.innerHTML = `
+  <button>test</button>
+  <span>multi-test</span>
+  <div>multi-test</div>
+`
+
+// log entire document to testing-playground
+screen.logTestingPlaygroundURL()
+// log a single element
+screen.logTestingPlaygroundURL(screen.getByText('test'))
 ```
