@@ -99,10 +99,11 @@ Nas consultas onde é utilizado `TextMatch` é possível passar um objeto como a
 - Para o argumento do `exact`o padrão é `true` corresponde a strings completas, com distinção entre maiúsculas e minúsculas. Quando `false`, corresponde a substrings e não diferencia maiúsculas de minúsculas;
 - Não funciona com `regex`ou `function`;
 
-#### 3.a.2) Nomalizer
+##### 3.a.2) Nomalizer
 - Por padrão, o `normalizer` retira os espaços em branco do início e no final do texto além de alterar espaços em branco adjacentes em um único espaço.
 - Você pode fornecer a função `getDefaultNormalizer` para obter um normalizador embutido, seja para ajustar essa normalização ou para chamá-lo de seu próprio normalizador.
-- **Exemplo**
+
+#### **Exemplo**
   - correspondência com o texto sem cortar:
 ```js
 screen.getByText('text', {
@@ -115,4 +116,24 @@ screen.getByText('text', {
   normalizer: str =>
     getDefaultNormalizer({trim: false})(str).replace(/[\u200E-\u200F]*/g, ''),
 })
+```
+
+### 4) Depuração
+Por conveniência, o `screen` possui um método para debug, que na verdade um atalho para `console.log(prettyDOM())`. Ele oferece suporte à depuração do documento, de um único elemento ou de uma matriz de elementos.
+
+```js
+import {screen} from '@testing-library/dom'
+
+document.body.innerHTML = `
+  <button>test</button>
+  <span>multi-test</span>
+  <div>multi-test</div>
+`
+
+// debug document
+screen.debug()
+// debug single element
+screen.debug(screen.getByText('test'))
+// debug multiple elements
+screen.debug(screen.getAllByText('multi-test'))
 ```
