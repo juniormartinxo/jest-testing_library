@@ -1,8 +1,9 @@
-# TDD com ReactJS | Typescript | Jest + Testing Library
+# TDD com CRA | ReactJS | Typescript | Jest + Testing Library
 Repositório para estudos de TDD
 
 <div align="center">
   
+![cra_32](https://user-images.githubusercontent.com/4163340/139855760-4fb72d33-c88e-4406-9200-7322913feabf.png)
 ![react_32](https://user-images.githubusercontent.com/4163340/139123716-da45c265-1b94-412c-8a1c-3bc86f393869.png)
 ![ts_32](https://user-images.githubusercontent.com/4163340/139123802-6ad0a212-1114-43f3-88aa-9975bb1b2660.png)
 ![jest_32](https://user-images.githubusercontent.com/4163340/139122285-877bf573-9f57-472d-9f79-92e92ced233f.png)
